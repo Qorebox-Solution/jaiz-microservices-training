@@ -7,6 +7,15 @@ A deliberately small teaching demo with three services:
 
 Kong routes external requests to the two HTTP services.
 
+## Web lab (trainer guide + VS Code in one browser tab)
+Teach without switching between the PDF and your editor:
+
+```bash
+cd lab && ./start.sh      # then open http://localhost:3000
+```
+
+See [lab/README.md](lab/README.md).
+
 ## Requirements
 - Docker Desktop / Docker Engine with Compose
 - .NET 10 SDK (only if you want to run services outside Docker)

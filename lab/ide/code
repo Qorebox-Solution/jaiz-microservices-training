@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Makes `code .` work in the browser VS Code terminal (opens the folder in this window).
+exec code-server --reuse-window "$@"

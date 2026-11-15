@@ -1,0 +1,17 @@
+{
+  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.startupEditor": "none",
+  "workbench.tips.enabled": false,
+  "editor.fontSize": 16,
+  "terminal.integrated.fontSize": 15,
+  "editor.minimap.enabled": false,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.tabSize": 4,
+  "[yaml]": { "editor.tabSize": 2 },
+  "files.autoSave": "afterDelay",
+  "security.workspace.trust.enabled": false,
+  "telemetry.telemetryLevel": "off",
+  "extensions.ignoreRecommendations": true,
+  "terminal.integrated.defaultProfile.linux": "bash"
+}

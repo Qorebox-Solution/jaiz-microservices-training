@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Lab-only helper.
+# Inside this browser VS Code, "localhost" means the VS Code container itself.
+# The workshop containers publish their ports on your laptop (the Docker host),
+# so this helper forwards localhost:5101/5102/8000/8001 to the host.
+# That way every curl command in the guide works exactly as written.
+
+PORTS="5101 5102 8000 8001"
+HOST_TARGET="${LAB_HOST:-host.docker.internal}"
+
+case "${1:-status}" in
+  on)
+    for p in $PORTS; do
+      if pgrep -f "socat TCP-LISTEN:$p," >/dev/null; then
+        echo "localhost:$p already forwarded"
+      else
+        nohup socat "TCP-LISTEN:$p,fork,reuseaddr" "TCP:$HOST_TARGET:$p" >/dev/null 2>&1 &
+        echo "localhost:$p  ->  $HOST_TARGET:$p"
+      fi
+    done
+    ;;
+  off)
+    pkill -f "socat TCP-LISTEN:" && echo "Port forwarding stopped." || echo "Port forwarding was not running."
+    ;;
+  status)
+    if pgrep -f "socat TCP-LISTEN:" >/dev/null; then
+      echo "Port forwarding is ON:"; pgrep -af "socat TCP-LISTEN:" | sed 's/^[0-9]* /  /'
+    else
+      echo "Port forwarding is OFF. Run: lab-ports on"
+    fi
+    ;;
+  *)
+    echo "Usage: lab-ports on|off|status"; exit 1 ;;
+esac

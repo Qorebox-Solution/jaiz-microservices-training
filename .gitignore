@@ -4,3 +4,7 @@ obj/
 *.user
 .env
 .DS_Store
+
+# Web lab: participant/trainer work files
+lab/workspace/*
+!lab/workspace/.gitkeep

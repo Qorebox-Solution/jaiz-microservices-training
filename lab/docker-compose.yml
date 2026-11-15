@@ -1,0 +1,26 @@
+# Jaiz web lab: step-by-step guide + browser VS Code on http://localhost:3000
+# Start it with ./start.sh (it sets LAB_WORKSPACE for you).
+name: jaiz-lab
+
+services:
+  ide:
+    build: ./ide
+    environment:
+      WORKSPACE: ${LAB_WORKSPACE:?Start the lab with ./start.sh}
+    volumes:
+      # Mounted at the SAME absolute path as on your laptop, so that the
+      # workshop's "./kong.yml" bind mount resolves correctly on the Docker host.
+      - ${LAB_WORKSPACE}:${LAB_WORKSPACE}
+      - /var/run/docker.sock:/var/run/docker.sock
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  gateway:
+    image: nginx:1.27-alpine
+    depends_on:
+      - ide
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./guide:/usr/share/nginx/html:ro
+    ports:
+      - "127.0.0.1:3000:80"

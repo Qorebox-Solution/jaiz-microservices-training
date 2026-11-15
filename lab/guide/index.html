@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jaiz Microservices Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">JAIZ</span> Microservices Lab <span class="tag">Trainer</span></div>
+    <select id="partSelect" title="Jump to part"></select>
+    <div class="progress" title="Progress"><div id="progressBar"></div></div>
+    <span id="progressText" class="muted"></span>
+    <div class="spacer"></div>
+    <button id="fontDown" title="Smaller text">A−</button>
+    <button id="fontUp" title="Larger text">A+</button>
+    <button id="toggleGuide" title="Hide/show guide (G)">⇤ Guide</button>
+    <a id="popout" href="/code/" target="_blank" title="Open VS Code in its own tab">VS Code ↗</a>
+  </header>
+
+  <main id="split">
+    <section id="guide">
+      <div id="stepScroll">
+        <div id="stepMeta"></div>
+        <h1 id="stepTitle"></h1>
+        <div id="stepBody"></div>
+      </div>
+      <footer class="nav">
+        <button id="prevBtn">◀ Back</button>
+        <label class="done"><input type="checkbox" id="doneBox"> Done</label>
+        <span id="stepCounter" class="muted"></span>
+        <button id="nextBtn" class="primary">Next ▶</button>
+      </footer>
+    </section>
+    <div id="divider" title="Drag to resize"></div>
+    <section id="ide">
+      <iframe id="ideFrame" src="/code/" title="VS Code" allow="clipboard-read; clipboard-write"></iframe>
+    </section>
+  </main>
+
+  <script src="steps.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Start the Jaiz web lab and open it in the browser.
 #
-#   ./start.sh              VS Code opens the repo folder (jaiz-simple-microservices)
+#   ./start.sh              VS Code opens the repo folder (jaiz-microservices-lab)
 #   ./start.sh <folder>     VS Code opens <folder> instead (e.g. ./start.sh workspace
 #                           for an empty folder to build everything from scratch)
 set -e

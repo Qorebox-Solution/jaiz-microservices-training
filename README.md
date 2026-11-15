@@ -1,4 +1,4 @@
-# Jaiz Bank — Simple Microservices Lab
+# Jaiz Bank — Microservices Lab
 
 A deliberately small teaching demo with three services:
 - Account Service: returns two sample accounts.

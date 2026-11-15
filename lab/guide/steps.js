@@ -274,7 +274,7 @@ window.LAB_STEPS = [
         'Drag the divider to resize. <strong>A− / A+</strong> changes the text size for the projector.',
         'Your position is remembered, so you can refresh the page any time.',
       ]},
-      { t: 'lab', title: 'About this VS Code', html: 'It runs in a container that already has the .NET 10 SDK and the Docker CLI. Docker commands you run here use the Docker Desktop on this laptop. VS Code shows the folder the lab was started on: by default the <code>jaiz-simple-microservices</code> repo folder, so edits here are your real files. Start with <code>./start.sh workspace</code> for an empty folder.' },
+      { t: 'lab', title: 'About this VS Code', html: 'It runs in a container that already has the .NET 10 SDK and the Docker CLI. Docker commands you run here use the Docker Desktop on this laptop. VS Code shows the folder the lab was started on: by default the <code>jaiz-microservices-lab</code> repo folder, so edits here are your real files. Start with <code>./start.sh workspace</code> for an empty folder.' },
       { t: 'warn', title: 'Training safety', html: 'This is a fake-data learning simulation. It does not move money or connect to bank systems. Never use real customer data or credentials.' },
       { t: 'trainer', title: 'Teaching rule', html: 'Do not skip a step because it seems obvious. Participants are not expected to know .NET project files, NuGet, Dockerfiles, Compose networking, Kong declarative configuration, Kafka topics, producers or consumers. Explain each one before asking them to use it.' },
     ]
@@ -390,8 +390,8 @@ dotnet --version` },
   {
     part: P2, title: '2.2 Create the working folder',
     body: [
-      { t: 'code', label: 'Terminal', text: `mkdir jaiz-simple-microservices
-cd jaiz-simple-microservices
+      { t: 'code', label: 'Terminal', text: `mkdir jaiz-microservices-lab
+cd jaiz-microservices-lab
 code .` },
       { t: 'explain', items: [
         '<code>mkdir</code> creates a folder.',
@@ -399,7 +399,7 @@ code .` },
         '<code>code .</code> opens the current folder in VS Code. If this command is unavailable, open VS Code manually and use <strong>File → Open Folder</strong>.',
       ]},
       { t: 'p', html: 'We will create the files in this folder. The <code>docker-compose.yml</code> file will live at the top level.' },
-      { t: 'lab', html: 'In this lab, <code>code .</code> reloads this browser VS Code with the new folder open. Open a new terminal afterwards (<strong>Terminal → New Terminal</strong>). It will start inside <code>jaiz-simple-microservices</code>.' },
+      { t: 'lab', html: 'In this lab, <code>code .</code> reloads this browser VS Code with the new folder open. Open a new terminal afterwards (<strong>Terminal → New Terminal</strong>). It will start inside <code>jaiz-microservices-lab</code>.' },
     ]
   },
   {
@@ -414,7 +414,7 @@ code .` },
       ]},
       { t: 'p', html: 'At the root, create two empty files: <code>docker-compose.yml</code> and <code>kong.yml</code>.' },
       { t: 'diagram', text:
-`jaiz-simple-microservices/
+`jaiz-microservices-lab/
 ├── AccountService/
 ├── TransferService/
 ├── NotificationService/
@@ -428,7 +428,7 @@ code .` },
   {
     part: P3, title: '3.1 Create the .NET project',
     body: [
-      { t: 'p', html: 'Make sure the terminal is in <code>jaiz-simple-microservices</code>, then run:' },
+      { t: 'p', html: 'Make sure the terminal is in <code>jaiz-microservices-lab</code>, then run:' },
       { t: 'code', label: 'Terminal', text: 'dotnet new web -n AccountService' },
       { t: 'explain', items: [
         '<code>dotnet</code> invokes the .NET SDK.',

@@ -27,7 +27,7 @@ Then open **http://localhost:3000**. The first start builds the VS Code image, w
 **Which folder VS Code opens**
 | Command | VS Code opens |
 |---|---|
-| `./start.sh` | This repo folder (`jaiz-simple-microservices`), so you edit the real files |
+| `./start.sh` | This repo folder (`jaiz-microservices-lab`), so you edit the real files |
 | `./start.sh workspace` | `lab/workspace/`, an empty folder for building everything from scratch with the guide |
 | `./start.sh /any/other/folder` | That folder |
 
@@ -41,7 +41,7 @@ Your files are kept.
 ```bash
 ./stop.sh
 ./start.sh workspace                              # empty folder for live-coding
-rm -rf workspace/jaiz-simple-microservices        # wipe a previous from-scratch run
+rm -rf workspace/jaiz-microservices-lab        # wipe a previous from-scratch run
 ```
 
 ## How to use the guide

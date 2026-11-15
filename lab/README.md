@@ -24,17 +24,24 @@ cd lab
 ```
 Then open **http://localhost:3000**. The first start builds the VS Code image, which takes a few minutes.
 
+**Which folder VS Code opens**
+| Command | VS Code opens |
+|---|---|
+| `./start.sh` | This repo folder (`jaiz-simple-microservices`), so you edit the real files |
+| `./start.sh workspace` | `lab/workspace/`, an empty folder for building everything from scratch with the guide |
+| `./start.sh /any/other/folder` | That folder |
+
 ## Stop
 ```bash
 ./stop.sh
 ```
 Your files are kept.
 
-## Start fresh for the next class
+## Switch folders / start fresh
 ```bash
 ./stop.sh
-rm -rf workspace/jaiz-simple-microservices
-./start.sh
+./start.sh workspace                              # empty folder for live-coding
+rm -rf workspace/jaiz-simple-microservices        # wipe a previous from-scratch run
 ```
 
 ## How to use the guide
@@ -51,7 +58,7 @@ rm -rf workspace/jaiz-simple-microservices
 Your current step, ticks, text size and layout are remembered in this browser.
 
 ## Things to know
-- **Files** you create in the browser VS Code live in `lab/workspace/` on this laptop.
+- **Files** you edit in the browser VS Code are the real files on this laptop, in the folder the lab was started on.
 - **Docker** commands you run in the browser VS Code use this laptop's Docker Desktop. The workshop containers are the same as if you ran them from a normal terminal.
 - **`lab-ports on`** is the one extra step (start of Part 10). Inside the browser VS Code, `localhost` means the VS Code container itself. This command forwards `localhost:5101/5102/8000/8001` to the laptop, so every `curl` in the guide works exactly as written. Run `lab-ports off` before repeating Part 3.3's `dotnet run` on port 5101.
 - The lab listens on `127.0.0.1:3000` only and has no password. Only this laptop can open it.

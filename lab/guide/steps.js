@@ -274,7 +274,7 @@ window.LAB_STEPS = [
         'Drag the divider to resize. <strong>A− / A+</strong> changes the text size for the projector.',
         'Your position is remembered, so you can refresh the page any time.',
       ]},
-      { t: 'lab', title: 'About this VS Code', html: 'It runs in a container that already has the .NET 10 SDK and the Docker CLI. Docker commands you run here use the Docker Desktop on this laptop. Files you create appear in <code>lab/workspace/</code> in the repo.' },
+      { t: 'lab', title: 'About this VS Code', html: 'It runs in a container that already has the .NET 10 SDK and the Docker CLI. Docker commands you run here use the Docker Desktop on this laptop. VS Code shows the folder the lab was started on: by default the <code>jaiz-simple-microservices</code> repo folder, so edits here are your real files. Start with <code>./start.sh workspace</code> for an empty folder.' },
       { t: 'warn', title: 'Training safety', html: 'This is a fake-data learning simulation. It does not move money or connect to bank systems. Never use real customer data or credentials.' },
       { t: 'trainer', title: 'Teaching rule', html: 'Do not skip a step because it seems obvious. Participants are not expected to know .NET project files, NuGet, Dockerfiles, Compose networking, Kong declarative configuration, Kafka topics, producers or consumers. Explain each one before asking them to use it.' },
     ]
@@ -1095,7 +1095,7 @@ docker compose logs -f notification-service` },
       { t: 'h', html: 'Clean up' },
       { t: 'code', label: 'Terminal', text: `docker compose down
 lab-ports off` },
-      { t: 'lab', html: 'To start fresh for the next class, stop the lab and delete <code>lab/workspace/jaiz-simple-microservices</code> on the laptop. See <code>lab/README.md</code>.' },
+      { t: 'lab', html: 'Live-coding from scratch next time? Run <code>./stop.sh</code>, then <code>./start.sh workspace</code> for an empty folder. See <code>lab/README.md</code>.' },
     ]
   },
 ];

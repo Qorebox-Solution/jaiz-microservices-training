@@ -94,6 +94,26 @@ pre.diagram { background: var(--code-bg); border: 1px solid var(--border); borde
 .box.lab { background: var(--lab); border-color: var(--lab-border); }
 .box.lab .box-title { color: var(--lab-border); }
 
+/* Click-a-line config viewer */
+.annotated { margin: 10px 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: var(--code-bg); }
+.ann-code { max-height: 46vh; overflow: auto; padding: 6px 0; font: .8em/1.55 "SF Mono", Menlo, Consolas, monospace; }
+.ann-line { display: flex; white-space: pre; padding: 0 10px 0 0; color: #9a9a9a; }
+.ann-no { width: 2.8em; flex: 0 0 auto; text-align: right; padding-right: 10px; color: #555; user-select: none; }
+.ann-line.has-note { color: #e6e6e6; cursor: pointer; border-left: 3px solid transparent; }
+.ann-line.has-note:hover { background: #1c2a22; border-left-color: var(--accent); }
+.ann-line.active { background: #173d2a; border-left-color: var(--accent); }
+.ann-note { border-top: 1px solid var(--border); background: var(--panel-2); padding: 10px 12px; min-height: 4.5em; font-size: .92em; position: sticky; bottom: 0; }
+.ann-note-line { margin-bottom: 4px; }
+.ann-note p { margin: 4px 0; }
+.ann-note .bad { color: #ff8a8a; }
+
+/* Quiz */
+.quiz-item { border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; margin: 8px 0; background: var(--panel-2); }
+.quiz-q { margin-bottom: 6px; }
+.quiz-n { display: inline-block; background: var(--accent-2); color: #000; font-weight: 700; font-size: .75em; border-radius: 3px; padding: 0 5px; margin-right: 4px; }
+.reveal { background: transparent; color: var(--accent-2); border: 1px solid var(--accent-2); border-radius: 4px; padding: 2px 10px; cursor: pointer; font-size: .85em; }
+.quiz-a { margin-top: 6px; padding: 6px 10px; border-left: 3px solid var(--accent); background: var(--expected); border-radius: 3px; }
+
 table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: .88em; }
 th, td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; vertical-align: top; }
 th { background: var(--panel-2); color: var(--head); }

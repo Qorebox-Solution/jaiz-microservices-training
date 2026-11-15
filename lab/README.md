@@ -44,6 +44,16 @@ Your files are kept.
 rm -rf workspace/jaiz-microservices-lab        # wipe a previous from-scratch run
 ```
 
+## What's in the guide
+- **Parts 1–14:** the full trainer guide, step by step.
+- **Config deep-dives (after Part 11), one each for Docker Compose, Kong and Kafka:**
+  - **Click-a-line viewer:** click any config line to see what it does and what breaks if it's wrong.
+  - **Inspect live:** Kong Admin API, Kafka topics, consumer-group lag, Docker network and DNS.
+  - **Break-it experiments:** change one setting, show the failure, undo it. Each one has been run against the real stack, and the guide shows the actual result.
+  - **Check questions:** answers hidden until you reveal them.
+
+The experiments edit `docker-compose.yml` / `kong.yml`. In the repo folder, `git checkout -- docker-compose.yml kong.yml` puts them back.
+
 ## How to use the guide
 | Action | How |
 |---|---|

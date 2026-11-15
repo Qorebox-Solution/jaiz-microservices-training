@@ -33,6 +33,11 @@
       case 'table':
         return `<table><thead><tr>${b.head.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>` +
           b.rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('') + `</tbody></table>`;
+      case 'annotated': return renderAnnotated(b);
+      case 'quiz':
+        return `<div class="quiz">${b.items.map((q, i) =>
+          `<div class="quiz-item"><div class="quiz-q"><span class="quiz-n">Q${i + 1}</span> ${q.q}</div>` +
+          `<button class="reveal">Show answer</button><div class="quiz-a" hidden>${q.a}</div></div>`).join('')}</div>`;
       case 'trainer': return box('trainer', b.title || 'Trainer: say / ask', b.html);
       case 'expected': return box('expected', 'Expected result', b.html);
       case 'warn': return box('warn', b.title || 'Important', b.html);
@@ -40,6 +45,21 @@
       default: return '';
     }
   }
+  // Click-a-line config viewer. b.notes = [[matchText, html], ...]; a line gets the
+  // first note whose matchText it contains (so repeated keys share one explanation).
+  function renderAnnotated(b) {
+    const lines = b.text.split('\n');
+    const rows = lines.map((line, i) => {
+      const hit = b.notes.findIndex(([m]) => line.includes(m));
+      const cls = hit >= 0 ? 'ann-line has-note' : 'ann-line';
+      return `<div class="${cls}" data-note="${hit}"><span class="ann-no">${i + 1}</span><span class="ann-txt">${esc(line) || ' '}</span></div>`;
+    }).join('');
+    const notes = b.notes.map(([, html]) => `<template>${html}</template>`).join('');
+    return `<div class="annotated"><div class="code-head"><span class="label">${esc(b.label)}</span>` +
+      `<span>Click a highlighted line ↓</span></div><div class="ann-code">${rows}</div>` +
+      `<div class="ann-note"><em>Click any highlighted line to explain it.</em></div>${notes}</div>`;
+  }
+
   const box = (cls, title, html) => `<div class="box ${cls}"><div class="box-title">${title}</div>${html}</div>`;
 
   // ---------- parts menu ----------
@@ -83,6 +103,25 @@
   });
 
   // ---------- copy buttons ----------
+  $('stepBody').addEventListener('click', (e) => {
+    const rev = e.target.closest('.reveal');
+    if (rev) {
+      const a = rev.nextElementSibling; a.hidden = !a.hidden;
+      rev.textContent = a.hidden ? 'Show answer' : 'Hide answer';
+      return;
+    }
+    const line = e.target.closest('.ann-line.has-note');
+    if (line) {
+      const wrap = line.closest('.annotated');
+      wrap.querySelectorAll('.ann-line.active').forEach(l => l.classList.remove('active'));
+      const idx = +line.dataset.note;
+      wrap.querySelectorAll('.ann-line').forEach(l => { if (+l.dataset.note === idx) l.classList.add('active'); });
+      const note = wrap.querySelectorAll('template')[idx].innerHTML;
+      const txt = line.querySelector('.ann-txt').textContent.trim();
+      wrap.querySelector('.ann-note').innerHTML = `<div class="ann-note-line"><code>${esc(txt)}</code></div>${note}`;
+    }
+  });
+
   $('stepBody').addEventListener('click', async (e) => {
     const btn = e.target.closest('.copy');
     if (!btn) return;

@@ -1,0 +1,19 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: account-service
+    url: http://account-service:8080
+    routes:
+      - name: account-route
+        paths:
+          - /accounts
+        strip_path: true
+
+  - name: transfer-service
+    url: http://transfer-service:8080
+    routes:
+      - name: transfer-route
+        paths:
+          - /transfers
+        strip_path: true
